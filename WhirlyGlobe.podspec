@@ -14,13 +14,13 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 
   s.subspec 'Headers' do |headers|
-    headers.source_files = "WhirlyGlobeSrc/{WhirlyGlobeLib,WhirlyGlobe-MaplyComponent}/include/**/*.h"
-    headers.public_header_files = "WhirlyGlobeSrc/{WhirlyGlobeLib,WhirlyGlobe-MaplyComponent}/include/*.h"
-
     headers.dependency 'eigen'
     headers.dependency 'boost/shared_ptr-includes'
     headers.dependency 'boost/pointer_cast-includes'
     headers.dependency 'boost/math-includes'
+
+    headers.source_files = "WhirlyGlobeSrc/{WhirlyGlobeLib,WhirlyGlobe-MaplyComponent}/include/**/*.h"
+    headers.public_header_files = "WhirlyGlobeSrc/{WhirlyGlobeLib,WhirlyGlobe-MaplyComponent}/include/*.h"
   end
 
   s.subspec 'Lib' do |lib|
