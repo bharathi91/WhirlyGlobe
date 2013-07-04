@@ -5,7 +5,7 @@ Pod::Spec.new do |s|
   s.homepage     = "https://github.com/mousebird/WhirlyGlobe"
   s.license      = { :type => "Apache 2.0" }
   s.author       = { "Steve Gifford" => "sjg@mousebirdconsulting.com" }
-  s.source       = { :git => "https://github.com/tiagoalmeida/WhirlyGlobe.git"}
+  s.source       = { :git => "https://github.com/tiagoalmeida/WhirlyGlobe.git", :tag => "v2.1"}
 
   s.preferred_dependency = 'Component'
 
