@@ -20,6 +20,8 @@
 
 #import <UIKit/UIKit.h>
 #import "GlobeView.h"
+#import "WhirlyGlobeViewController.h"
+
 
 /** WhirlyGlobe Pinch Gesture Delegate
  Responds to pinches on a UIView and manipulates the globe view
@@ -32,10 +34,12 @@
 	WhirlyGlobeView *globeView;
     float minHeight,maxHeight;
 }
+
+@property (nonatomic, weak) id<WhirlyGlobeViewControllerDelegate> notificationDelegate;
 @property (nonatomic,assign) float minHeight,maxHeight;
 
 /// Create a pinch gesture and a delegate and wire them up to the given UIView
 /// Also need the view parameters in WhirlyGlobeView
-+ (WGPinchDelegateFixed *)pinchDelegateForView:(UIView *)view globeView:(WhirlyGlobeView *)globeView;
++ (WGPinchDelegateFixed *)pinchDelegateForView:(UIView *)view globeView:(WhirlyGlobeView *)globeView notifyDelegate: (id) notificationDelegate;
 
 @end

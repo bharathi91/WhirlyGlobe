@@ -39,7 +39,11 @@ using namespace WhirlyKit;
 + (WhirlyGlobePanDelegate *)panDelegateForView:(UIView *)view globeView:(WhirlyGlobeView *)globeView
 {
 	WhirlyGlobePanDelegate *panDelegate = [[WhirlyGlobePanDelegate alloc] initWithGlobeView:globeView];
-	[view addGestureRecognizer:[[UIPanGestureRecognizer alloc] initWithTarget:panDelegate action:@selector(panAction:)]];
+    
+    UIPanGestureRecognizer *gestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:panDelegate action:@selector(panAction:)];
+    gestureRecognizer.delegate = panDelegate;
+    
+	[view addGestureRecognizer:gestureRecognizer];
 	return panDelegate;
 }
 

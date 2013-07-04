@@ -128,6 +128,12 @@
 /// Add a view to track to a particular location
 - (void)addViewTracker:(MaplyViewTracker *)viewTrack;
 
+/// NEW CODE: brings a subview to the top
+- (void)bringViewTrackerToTop:(MaplyViewTracker *)viewTrack;
+
+/// Remove all view trackers
+- (void)removeViewTrackers;
+
 /// Remove the view tracker associated with the given UIView
 - (void)removeViewTrackForView:(UIView *)view;
 

@@ -687,6 +687,24 @@ static const float PerfOutputDelay = 15.0;
         [glView addSubview:viewTrack.view];
 }
 
+/// NEW CODE
+-(void) bringViewTrackerToTop:(WGViewTracker *) viewTrack {
+    [glView bringSubviewToFront:viewTrack.view];
+}
+
+/// Remove view Trackers
+-(void)removeViewTrackers {
+    ViewPlacementGenerator *vpGen = scene->getViewPlacementGenerator();
+
+    for(WGViewTracker *viewTracker in viewTrackers) {
+        vpGen->removeView(viewTracker.view);
+        if ([viewTracker.view superview] == glView)
+            [viewTracker.view removeFromSuperview];
+    }
+    
+    [viewTrackers removeAllObjects];
+}
+
 /// Remove the view tracker associated with the given UIView
 - (void)removeViewTrackForView:(UIView *)view
 {

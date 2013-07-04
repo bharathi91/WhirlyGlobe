@@ -40,8 +40,13 @@ using namespace WhirlyKit;
 + (WhirlyGlobeLongPressDelegate *)longPressDelegateForView:(UIView *)view globeView:(WhirlyGlobeView *)globeView
 {
     WhirlyGlobeLongPressDelegate *pressDelegate = [[WhirlyGlobeLongPressDelegate alloc] initWithGlobeView:globeView];
-    [view addGestureRecognizer:[[UILongPressGestureRecognizer alloc]
-                                 initWithTarget:pressDelegate action:@selector(pressAction:)]];
+    
+    UILongPressGestureRecognizer *longGestureRecognizer = [[UILongPressGestureRecognizer alloc]
+                                                           initWithTarget:pressDelegate action:@selector(pressAction:)];
+    
+    longGestureRecognizer.delegate = pressDelegate;
+    
+    [view addGestureRecognizer:longGestureRecognizer];
     return pressDelegate;
 }
 

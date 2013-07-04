@@ -37,11 +37,13 @@
 	return self;
 }
 
-+ (WGPinchDelegateFixed *)pinchDelegateForView:(UIView *)view globeView:(WhirlyGlobeView *)globeView
++ (WGPinchDelegateFixed *)pinchDelegateForView:(UIView *)view globeView:(WhirlyGlobeView *)globeView notifyDelegate:(id) notDelegate
 {
 	WGPinchDelegateFixed *pinchDelegate = [[WGPinchDelegateFixed alloc] initWithGlobeView:globeView];
     UIPinchGestureRecognizer *pinchRecog = [[UIPinchGestureRecognizer alloc] initWithTarget:pinchDelegate action:@selector(pinchGesture:)];
     pinchRecog.delegate = pinchDelegate;
+    pinchDelegate.notificationDelegate = notDelegate;
+    
 	[view addGestureRecognizer:pinchRecog];
 	return pinchDelegate;
 }
@@ -72,6 +74,11 @@
 			[globeView setHeightAboveGlobe:newHeight];
         }
 			break;
+        // NEW CODE
+        case UIGestureRecognizerStateEnded:
+            if ([self.notificationDelegate respondsToSelector:@selector(didPinchedToNewHeight:fromOldHeight:)])
+                [self.notificationDelegate didPinchedToNewHeight:globeView.heightAboveGlobe fromOldHeight: startZ];
+            break;
         default:
             break;
 	}

@@ -41,9 +41,22 @@ using namespace WhirlyKit;
 {
 	WhirlyGlobeTapDelegate *tapDelegate = [[WhirlyGlobeTapDelegate alloc] initWithGlobeView:globeView];
     
-	[view addGestureRecognizer: [[UITapGestureRecognizer alloc] initWithTarget:tapDelegate action:@selector(tapAction:)]];
+    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:tapDelegate action:@selector(tapAction:)];
+    
+    tapRecognizer.cancelsTouchesInView = NO;
+    tapRecognizer.delegate = tapDelegate;
+    
+	[view addGestureRecognizer: tapRecognizer];
     
 	return tapDelegate;
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
+    return YES;
+}
+
+-(BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
+    return YES;
 }
 
 // We'll let other gestures run

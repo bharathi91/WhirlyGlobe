@@ -47,6 +47,9 @@
 ///  won't trigger this.
 - (void)globeViewController:(WhirlyGlobeViewController *)viewC layerDidLoad:(WGViewControllerLayer *)layer;
 
+///NEW CODE
+- (void)didPinchedToNewHeight: (float) newHeight fromOldHeight: (float) oldHeight;
+
 @end
 
 /** This is the main object in the WhirlyGlobe Component.  You fire up one

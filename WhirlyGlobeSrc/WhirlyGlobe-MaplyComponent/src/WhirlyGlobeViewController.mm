@@ -137,7 +137,7 @@ using namespace WhirlyGlobe;
 - (void)sphericalEarthLayerLoaded:(NSNotification *)note
 {
     WhirlyGlobeSphericalEarthLayer *layer = note.object;
-    
+
     // Look for the matching layer
     if ([delegate respondsToSelector:@selector(globeViewController:layerDidLoad:)])
         for (WGViewControllerLayer *userLayer in userLayers)
@@ -171,7 +171,7 @@ using namespace WhirlyGlobe;
     if (pinchGesture)
     {
         if (!pinchDelegate)
-            pinchDelegate = [WGPinchDelegateFixed pinchDelegateForView:glView globeView:globeView];
+            pinchDelegate = [WGPinchDelegateFixed pinchDelegateForView:glView globeView:globeView notifyDelegate:self.delegate];
     } else {
         if (pinchDelegate)
         {
