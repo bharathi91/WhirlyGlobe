@@ -5,7 +5,7 @@ Pod::Spec.new do |s|
   s.homepage     = "https://github.com/mousebird/WhirlyGlobe"
   s.license      = { :type => "Apache 2.0" }
   s.author       = { "Steve Gifford" => "sjg@mousebirdconsulting.com" }
-  s.source       = { :git => "https://github.com/tiagoalmeida/WhirlyGlobe.git", :tag => "v2.1"}
+  s.source       = { :git => "https://github.com/tiagoalmeida/WhirlyGlobe.git"}
 
   s.preferred_dependency = 'Component'
 
@@ -14,13 +14,13 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 
   s.subspec 'Headers' do |headers|
+    headers.source_files = "WhirlyGlobeSrc/{WhirlyGlobeLib,WhirlyGlobe-MaplyComponent}/include/**/*.h"
+    headers.public_header_files = "WhirlyGlobeSrc/{WhirlyGlobeLib,WhirlyGlobe-MaplyComponent}/include/*.h"
+
     headers.dependency 'eigen'
     headers.dependency 'boost/shared_ptr-includes'
     headers.dependency 'boost/pointer_cast-includes'
     headers.dependency 'boost/math-includes'
-
-    headers.source_files = "WhirlyGlobeSrc/{WhirlyGlobeLib,WhirlyGlobe-MaplyComponent}/include/**/*.h"
-    headers.public_header_files = "WhirlyGlobeSrc/{WhirlyGlobeLib,WhirlyGlobe-MaplyComponent}/include/*.h"
   end
 
   s.subspec 'Lib' do |lib|
