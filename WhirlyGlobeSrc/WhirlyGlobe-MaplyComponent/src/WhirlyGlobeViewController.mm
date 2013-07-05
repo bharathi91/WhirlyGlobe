@@ -365,8 +365,6 @@ using namespace WhirlyGlobe;
             coord.y = msg.whereGeo.lat();
             [delegate globeViewController:self didTapAt:coord];
         }
-        // Didn't select anything, so rotate
-        [self rotateToPoint:msg.whereGeo time:1.0];
     }
 }
 
