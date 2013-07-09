@@ -86,6 +86,9 @@ using namespace WhirlyGlobe;
     
     // Wire up the gesture recognizers
 	panDelegate = [PanDelegateFixed panDelegateForView:glView globeView:globeView];
+    
+    panDelegate.notificationDelegate = self.delegate;
+    
 	tapDelegate = [WhirlyGlobeTapDelegate tapDelegateForView:glView globeView:globeView];
     // These will activate the appropriate gesture
     self.pinchGesture = true;

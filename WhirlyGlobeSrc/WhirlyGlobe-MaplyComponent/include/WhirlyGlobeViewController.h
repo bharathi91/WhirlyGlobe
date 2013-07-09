@@ -49,6 +49,7 @@
 
 ///NEW CODE
 - (void)didPinchedToNewHeight: (float) newHeight fromOldHeight: (float) oldHeight;
+- (void)panBegan;
 
 @end
 

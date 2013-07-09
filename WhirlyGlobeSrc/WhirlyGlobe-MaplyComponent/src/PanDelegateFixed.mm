@@ -140,6 +140,10 @@ static const float MomentumAnimLen = 1.0;
             runEndMomentum = true;
             
             [self startRotateManipulation:pan sceneRender:sceneRender glView:glView];
+            
+            if([self.notificationDelegate respondsToSelector:@selector(panBegan)]) {
+                [self.notificationDelegate panBegan];
+            }
 		}
 			break;
 		case UIGestureRecognizerStateChanged:

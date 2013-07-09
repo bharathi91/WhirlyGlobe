@@ -20,12 +20,15 @@
 
 #import <Foundation/Foundation.h>
 #import "WhirlyGlobe.h"
+#import "WhirlyGlobeViewController.h"
+
 
 // Version of pan delegate specific to this app
 // The pan delegate handles panning and rotates the globe accordingly
 @interface PanDelegateFixed : NSObject<UIGestureRecognizerDelegate> 
 
 @property(nonatomic,assign) bool northUp;
+@property(nonatomic, weak) id<WhirlyGlobeViewControllerDelegate> notificationDelegate;
 
 + (PanDelegateFixed *)panDelegateForView:(UIView *)view globeView:(WhirlyGlobeView *)globeView;
 
