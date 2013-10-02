@@ -71,6 +71,8 @@ typedef enum {PanNone,PanFree,PanSuspended} PanningType;
 	PanDelegateFixed *panDelegate = [[PanDelegateFixed alloc] initWithGlobeView:globeView];
     UIPanGestureRecognizer *panRecog = [[UIPanGestureRecognizer alloc] initWithTarget:panDelegate action:@selector(panAction:)];
     panRecog.delegate = self;
+    panRecog.minimumNumberOfTouches = 1;
+
 	[view addGestureRecognizer:panRecog];
 	return panDelegate;
 }
@@ -88,9 +90,9 @@ typedef enum {PanNone,PanFree,PanSuspended} PanningType;
     startTransform = [view calcFullMatrix];
     startQuat = view.rotQuat;
     spinQuat = view.rotQuat;
-    startPoint = [pan locationOfTouch:0 inView:glView];
+    startPoint = [pan locationInView:glView];
     spinDate = CFAbsoluteTimeGetCurrent();
-    lastTouch = [pan locationOfTouch:0 inView:glView];
+    lastTouch = [pan locationInView:glView];
     if ([view pointOnSphereFromScreen:startPoint transform:&startTransform 
                             frameSize:Point2f(sceneRender.framebufferWidth/glView.contentScaleFactor,sceneRender.framebufferHeight/glView.contentScaleFactor) hit:&startOnSphere])
         // We'll start out letting them play with box axes
